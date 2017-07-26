@@ -10,10 +10,6 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 </head>
 <body>
-<?php
-$a = dirToArray(path);
-?>
-
 <table class="table table-striped">
     <tr>
         <td>Number</td>
@@ -22,12 +18,12 @@ $a = dirToArray(path);
         <td>Delete</td>
     </tr>
     <?php
-    foreach($a as $key =>$val){
+    foreach($arr as $key =>$val){
         ?>
         <tr>
             <td><?php echo $key; ?></td>
             <td><?php echo $val; ?></td>
-            <td><?php  echo ConvertBytes(fileSise($val));?> </td>
+            <td><?php echo $countSize; ?> </td>
             <td><a href="?valdelete=<?php echo $val; ?>">DELETE</a></td>
         </tr>
     <?php  } ?>

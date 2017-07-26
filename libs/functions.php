@@ -69,8 +69,12 @@ function countFilesInDir($patch){
 
 function painTableWithFiles($var){
 		if($var == 0){
-			echo No_Files_inside;
+			echo NO_FILES_INSIDE;
 		}else{
+		    $arr = dirToArray(path);
+		    foreach ($arr as $value){
+                $countSize = ConvertBytes(fileSise($value));
+            }
 			return include('templates/index.php');
 		}
 }
