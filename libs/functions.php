@@ -1,35 +1,30 @@
 <?php
-function funcUpload(){
-		if(is_uploaded_file($_FILES["filename"]["tmp_name"]))
-			{
-				move_uploaded_file($_FILES["filename"]["tmp_name"], path.$_FILES["filename"]["name"]);
-
-			} else {
-					return false;		
-			}
+function funcUpload($path){
+    if(is_dir($path)) {
+        if (is_uploaded_file($_FILES["filename"]["tmp_name"])) {
+            move_uploaded_file($_FILES["filename"]["tmp_name"], $path . $_FILES["filename"]["name"]);
+            return true;
+        } else return false;
+    }else return false;
+    return false;
 }
 
 function dirToArray($dir) {
-
     $result = array();
-
-    $cdir = scandir($dir);
-    foreach ($cdir as $key => $value)
-    {
-        if (!in_array($value,array(".","..")))
-        {
-            if (is_dir($dir . DIRECTORY_SEPARATOR . $value))
-            {
-                $result[$value] = dirToArray($dir . DIRECTORY_SEPARATOR . $value);
-            }
-            else
-            {
-                $result[] = $value;
+    if(is_dir($dir)) {
+        $cdir = scandir($dir);
+        foreach ($cdir as $key => $value) {
+            if (!in_array($value, array(".", ".."))) {
+                if (is_dir($dir . DIRECTORY_SEPARATOR . $value)) {
+                    $result[$value] = dirToArray($dir . DIRECTORY_SEPARATOR . $value);
+                } else {
+                    $result[] = $value;
+                }
             }
         }
+        return $result;
     }
-
-    return $result;
+    return false;
 }
 function fileSise($var){
     return filesize(path.$var);
@@ -56,27 +51,30 @@ function ConvertBytes($number)
 }
 
 function countFilesInDir($patch){
-    $dir = opendir($patch);
-    $count = 0;
-    while($file = readdir($dir)){
-        if($file == '.' || $file == '..' || is_dir($patch . $file)){
-            continue;
+    if(is_dir($patch)) {
+        $dir = opendir($patch);
+        $count = 0;
+        while ($file = readdir($dir)) {
+            if ($file == '.' || $file == '..' || is_dir($patch . $file)) {
+                continue;
+            }
+            $count++;
         }
-        $count++;
+        return $count;
     }
-   return $count;
+    return false;
 }
 
 function painTableWithFiles($var){
-		if($var == 0){
-			echo NO_FILES_INSIDE;
-		}else{
-		    $arr = dirToArray(path);
-		    foreach ($arr as $value){
-                $countSize = ConvertBytes(fileSise($value));
-            }
-			return include('templates/index.php');
-		}
+    if($var == 0){
+        echo NO_FILES_INSIDE;
+    }else{
+        $arr = dirToArray(path);
+        foreach ($arr as $value){
+            $countSize = ConvertBytes(fileSise($value));
+        }
+        return include('templates/index.php');
+    }
 }
 
 function deleteFile($file){

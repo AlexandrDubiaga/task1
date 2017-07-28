@@ -1,0 +1,21 @@
+Таск1 - пока не принимаю. Осталось немного.
+1. Если внезапно поменять имя дир аплоада - вот что получается: (Добавьте в функциях проверку директории)
+Warning: opendir(/home/user2/public_html/MYPHP/task1/files/): failed to open dir: No such file or directory in /usr/home/user2/public_html/MYPHP/task1/libs/functions.php on line 59
+
+Warning: readdir() expects parameter 1 to be resource, boolean given in /usr/home/user2/public_html/MYPHP/task1/libs/functions.php on line 61
+NO_FILES_INSIDE
+Warning: scandir(/home/user2/public_html/MYPHP/task1/files/): failed to open dir: No such file or directory in /usr/home/user2/public_html/MYPHP/task1/libs/functions.php on line 16
+
+Warning: scandir(): (errno 2): No such file or directory in /usr/home/user2/public_html/MYPHP/task1/libs/functions.php on line 16
+
+Warning: Invalid argument supplied for foreach() in /usr/home/user2/public_html/MYPHP/task1/libs/functions.php on line 17
+
+2. В index.php не должно быть вообще тегов HTML, для этого есть темплейт.
+
+
+
+On 26-Jul-17 9:10 PM, Alex Cardo wrote:
+https://github.com/AlexandrDubiaga/task1.git
+
+
+/usr/home/user2/public_html/MYPHP/task1

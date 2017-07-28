@@ -10,13 +10,12 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 </head>
 <body>
-<h2><p><b> UPLOAD</b></p></h2>
-<form action="#" method="post" enctype="multipart/form-data">
-    <input type="file" name="filename">
+<h2 style="color: #2aabd2;font-style: italic"><p><b>Upload form</b></p></h2>
+<form action="#" method="post" enctype="multipart/form-data" style="background-color: pink; width: 300px; padding: 20px; border: 2px solid blueviolet;">
+    <input type="file" name="filename" >
     <button type="submit" class="btn btn-success">DOWNLOAD</button>
 
 </form>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 </body>

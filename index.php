@@ -4,18 +4,23 @@ include('libs/functions.php');
 include('templates/uploadForm.php');
 
 if($_FILES['filename']){
-	$varForFile = funcUpload();
-	echo good_download;
+	$varForFile = funcUpload(path);
+	if($varForFile){
+		echo good_download;
+	}else echo ERROR_FILE;
 }
 else not_download;
-echo "<br>";
-echo "<br>";
-painTableWithFiles(countFilesInDir(path));
-
+$conterFileinDir = countFilesInDir(path);
+if(!$conterFileinDir){
+    echo ERROR_PATCH;
+}
 $val = dirToArray(path);
+if(!$val){
+   echo ERROR_PATCH;
+}
+painTableWithFiles(countFilesInDir(path));
 if(isset($_GET['valdelete'])){
     deleteFile($_GET['valdelete']);
 }
-
 
 ?>
